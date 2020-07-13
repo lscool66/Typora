@@ -6,7 +6,7 @@
 
 ## 1.运行 ./runInstaller 出现256颜色 不通过问题
 
- ![è¿éåå¾çæè¿°](https://img-blog.csdn.net/20170827204051960?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjIzNDQ1Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+ ![root用户问题](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20170827204051960)
 
  解决方案：  切换到root，输入命令xhost +  运行后如下图可切换到oracle安装
 
