@@ -1,6 +1,4 @@
-# centos7静默安装oracle11gR2
-
-## 文章目录
+# CentOS7图形化界面Oracle11gR2
 
 [TOC]
 
@@ -30,13 +28,10 @@ PS：还有其他硬件要求可以直接去官网([传送门](https://docs.orac
 
   PS:官方下载地址：[传送门](https://www.oracle.com/technetwork/cn/database/enterprise-edition/downloads/index.html)；
   
-  [服务器无法访问互联网所需离线软件包](https://pan.baidu.com/s/1JsCmtzGlv_QvLBVNxXkDmw)
-  
+  [服务器无法访问互联网所需离线软件包]
   https://pan.baidu.com/s/1JsCmtzGlv_QvLBVNxXkDmw
 
 ## 二、环境准备
-
-
 
 ### 1、安装必要的工具
 
@@ -46,8 +41,6 @@ PS：还有其他硬件要求可以直接去官网([传送门](https://docs.orac
 ```
 
 - PS：如果已经有了就不需重复安装
-
-
 
 ### 2、关闭防火墙
 
@@ -88,14 +81,11 @@ Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
 
 - PS：不关闭防火墙，远程连接会提示连接超时，也可以通过开放对应端口如下
 
-
 ```shell
 firewall-cmd --permanent --zone=public --add-port=1521/tcp
 firewall-cmd --reload
 firewall-cmd --zone=public --list-ports
 ```
-
-
 
 ### 3、关闭Selinux
 
@@ -105,8 +95,6 @@ firewall-cmd --zone=public --list-ports
 #查看Selinux状态
 [root@centos7-minimal ~]# /usr/sbin/sestatus -v
 ```
-
-
 
 ### 4、安装Oracle依赖包
 
@@ -132,7 +120,6 @@ firewall-cmd --zone=public --list-ports
 
 - PS：#oracle-rdbms-server-11gR2-preinstall包所干的事情
 
-
 ```
 （1）自动安装oracle所需的RPM包
 （2）自动创建oracle用户和group组
@@ -141,8 +128,6 @@ firewall-cmd --zone=public --list-ports
 ```
 
 ## 三、安装前配置
-
-
 
 ### 1、修改oracle用户密码
 
@@ -156,16 +141,12 @@ firewall-cmd --zone=public --list-ports
 passwd：所有的身份验证令牌已经成功更新。
 ```
 
-
-
 ### 2、用Oracle登录用户
 
 ```shell
 #重新打开一个bash切换为Oracle用户登录系统
 [oracle@centos7-minimal ~]$
 ```
-
-
 
 ### 3、上传安装包到服务器
 
@@ -176,8 +157,6 @@ passwd：所有的身份验证令牌已经成功更新。
 -rw-r--r-- 1 oracle oinstall 1239269270 9月  29 15:48 linux.x64_11gR2_database_1of2.zip
 -rw-r--r-- 1 oracle oinstall 1111416131 9月  29 15:49 linux.x64_11gR2_database_2of2.zip
 ```
-
-
 
 ### 4、解压oracle安装包
 
@@ -192,8 +171,6 @@ drwxr-xr-x 8 oracle oinstall        128 8月  21 2009 database
 -rw-r--r-- 1 oracle oinstall 1111416131 9月  29 15:49 linux.x64_11gR2_database_2of2.zip
 [oracle@centos7-minimal ~]$
 ```
-
-
 
 ### 5、配置oracle用户环境变量
 
@@ -212,10 +189,7 @@ export LANG=en_US.utf8
 
 ## 四、开始安装
 
-
-
 ### 1、运行安装程序
-
 
 ```shell
 #运行安装程序
@@ -230,46 +204,33 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2019-09-29_04
 #确保安装x11才能出现窗口
 ```
 
-
-
 ### 2、反选I wish to receive security updates via My Oracle Support 
 
 ==点击next==
 
-![1569744199491](centos7Oracle11gR2.assets/1569744199491.png)
-
-
+![1569744199491](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744199491.png)
 
 ### 4、确定点击==yes==
 
-
-![1569744234616](centos7Oracle11gR2.assets/1569744234616.png)
-
-
+![1569744234616](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744234616.png)
 
 ### 5、选择创建并配置数据库（create and configure a database）
 
 ==点击next==
 
-![1569744241449](centos7Oracle11gR2.assets/1569744241449.png)
-
-
+![1569744241449](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744241449.png)
 
 ### 6、选择server class
 
 点击==next==
 
-![1569744247600](centos7Oracle11gR2.assets/1569744247600.png)
-
-
+![1569744247600](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744247600.png)
 
 ### 7、选择单实例安装
 
 点击==next==
 
-![1569744253104](centos7Oracle11gR2.assets/1569744253104.png)
-
-
+![1569744253104](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744253104.png)
 
 ### 8、可以选择 [典型安装]() 也可以选择 [高级安装]()
 
@@ -277,67 +238,43 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2019-09-29_04
 
 点击==next==
 
-![1569744257569](centos7Oracle11gR2.assets/1569744257569.png)
-
-
+![1569744257569](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744257569.png)
 
 ### 9、以下是默认生成的安装路径，如果不会配置只需配置密码即可
 
 点击==next==
 
-![1569744274048](centos7Oracle11gR2.assets/1569744274048.png)
-
-
+![1569744274048](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744274048.png)
 
 密码不符合规范点击==yes==即可
 
-![1569744293816](centos7Oracle11gR2.assets/1569744293816.png)
-
-
-
-
+![1569744293816](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744293816.png)
 
 默认路径即可
 
 - 点击==next==
 
-![1569744301489](centos7Oracle11gR2.assets/1569744301489.png)
-
-
+![1569744301489](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744301489.png)
 
 ### 10、生成响应文件
 
-
-
-![1569744317848](centos7Oracle11gR2.assets/1569744317848.png)
-
-
+![1569744317848](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744317848.png)
 
 - 有检测失败的==忽略==即可
 
-
-
-![1569744360244](centos7Oracle11gR2.assets/1569744360244.png)
-
-
+![1569744360244](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744360244.png)
 
 - 勾选 ==ignore all==
 
-![1569744374847](centos7Oracle11gR2.assets/1569744374847.png)
-
-
+![Oracle11gR2忽略警告](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Oracle11gR2%E5%BF%BD%E7%95%A5%E8%AD%A6%E5%91%8A.png)
 
 - 可选保存==响应文件==
 
-![1569744414528](centos7Oracle11gR2.assets/1569744414528.png)
-
-
+![Oracle11gR2保存相应文件](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Oracle11gR2%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%BA%94%E6%96%87%E4%BB%B6.png)
 
 ### 11、开始安装显示安装进度
 
-![1569744420605](centos7Oracle11gR2.assets/1569744420605.png)
-
-
+![1569744420605](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Oracle11gR2%E5%AE%89%E8%A3%85%E8%BF%9B%E5%BA%A6.png)
 
 ### 12、如果安装过程中，在link binaries阶段出现2个错误
 
@@ -381,23 +318,17 @@ $(MK_EMAGENT_NMECTL) -lnnz11
 #点击Retry即可。
 ```
 
-
-
 - 按上述修改完相关文件==retry==即可
 
-![1569744874105](centos7Oracle11gR2.assets/1569744874105.png)
+![1569744874105](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744874105.png)
 
 - 继续安装
 
-![1569744888725](centos7Oracle11gR2.assets/1569744888725.png)
-
-
+![1569744888725](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744888725.png)
 
 ### 13、如果没有配置==hosts==会出现如下错误
 
-
-
-![1569745082872](centos7Oracle11gR2.assets/1569745082872.png)
+![1569745082872](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745082872.png)
 
 ```shell
 #只需修改hosts文件retry即可
@@ -409,42 +340,27 @@ $(MK_EMAGENT_NMECTL) -lnnz11
 
 - 继续安装
 
-
-![1569745216134](centos7Oracle11gR2.assets/1569745216134.png)
-
-
+![1569745216134](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745216134.png)
 
 ### 14、接下来会自动创建数据库
 
+![1569745283207](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745283207.png)
 
-
-![1569745283207](centos7Oracle11gR2.assets/1569745283207.png)![1569745564001](centos7Oracle11gR2.assets/1569745564001.png)
-
-
+![1569745564001](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745564001.png)
 
 - 安装成功点击==ok==即可
 
-![1569745958600](centos7Oracle11gR2.assets/1569745958600.png)
-
-
+![1569745958600](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745958600.png)
 
 - 接下来会出现要你使用root账户执行两个文件，新打开一个窗口登录root账户执行即可
 
-![1569745991431](centos7Oracle11gR2.assets/1569745991431.png)
-
-
+![1569745991431](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745991431.png)
 
 ### 15、最后点击finish即可
 
-
-
-![1569746121936](centos7Oracle11gR2.assets/1569746121936.png)
-
-
+![1569746121936](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569746121936.png)
 
 ### 16、查看监听状态
-
-
 
 ```shell
 #查看监听状态，监听安装完默认是启动的
@@ -507,8 +423,6 @@ The command completed successfully
 
 ```
 
-
-
 ## 五、安装及连接遇到的问题解决
 
 ### ORA-12170:TNS:连接超时
@@ -561,7 +475,6 @@ SID_LIST_LISTENER =
 LISTENER =(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = centos7-minimal)(PORT = 1521)))
 ADR_BASE_LISTENER = /home/oracle/app/oracle
 
-
 #修改tnsnames.ora，这是修改前的
 [oracle@centos7-minimal admin]$ vi tnsnames.ora
 # tnsnames.ora Network Configuration File: /home/oracle/app/oracle/product/11.2.0/dbhome_1/network/admin/tnsnames.ora
@@ -590,9 +503,9 @@ orcl =
       (SID = orcl)
     )
   )
-  
-  #关闭监听服务，有时候关闭不了，提示没有权限操作监听服务，解决方法下一个问题
-  [oracle@centos7-minimal admin]$ lsnrctl stop 
+
+#关闭监听服务，有时候关闭不了，提示没有权限操作监听服务，解决方法下一个问题
+[oracle@centos7-minimal admin]$ lsnrctl stop 
 
 LSNRCTL for Linux: Version 11.2.0.1.0 - Production on 04-MAR-2019 16:25:32
 
@@ -641,21 +554,20 @@ shell*Plus: Release 11.2.0.1.0 Production on Mon Mar 4 16:27:54 2019
 
 Copyright (c) 1982, 2009, Oracle.  All rights reserved.
 
-
 Connected to:
 Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
 With the Partitioning, OLAP, Data Mining and Real Application Testing options
 
-shell> 
+SQL> 
 
 #立即关闭数据库服务
-shell> shutdown immediate
+SQL> shutdown immediate
 Database closed.
 Database dismounted.
 ORACLE instance shut down
 
 #开启数据库服务
-shell> startup
+SQL> startup
 ORACLE instance started.
 
 Total System Global Area  764121088 bytes
@@ -667,7 +579,7 @@ Database mounted.
 Database opened.
 
 #注册
-shell> alter system register;   
+SQL> alter system register;   
 System altered.
 
 ```
@@ -699,11 +611,7 @@ PS：一步都不要少，其实对于修改的这两个文件内容，我猜在
 grant  resource to username
 ```
 
-
-
 ## 六、设置数据库自启动
-
-
 
 ### 1、使用Oracle用户修改两个文件
 
@@ -718,8 +626,6 @@ ORACLE_HOME_LISTNER=$1
 ORACLE_HOME_LISTNER=$ORACLE_HOME
 ```
 
-
-
 ###  2、修改/etc/oratab文件
 
 ```shell
@@ -728,8 +634,6 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 修改为：  orcl:/home/oracle/app/oracle/product/11.2.0/dbhome_1:Y
 ```
 
-
-
 ### 3、新建Oracle服务自启动脚本
 
 ```shell
@@ -737,8 +641,6 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 ```
 
 - 将以下脚本复制到文件中，保存退出
-
-  
 
 ```shell
 #!/bin/sh
@@ -800,15 +702,11 @@ exit 0
 
 ```
 
-
-
 ### 4、更改oracle脚本的执行权限
 
 ```shell
 [root@localhost oracle]# chmod a+x /etc/init.d/oracle
 ```
-
-
 
 ### 5、检查脚本能否执行
 
@@ -817,8 +715,6 @@ exit 0
 [root@localhost oracle]# /etc/init.d/oracle stop          #关闭oracle脚本
 [root@localhost oracle]# /etc/init.d/oracle restart       #重启oracle脚本
 ```
-
-
 
 ### 6、添加执行权限并建立链接
 
@@ -842,6 +738,7 @@ ps:当这个命令被执行的时候，会去脚本文件oracle中寻找# chkcon
 中创建符号连接文件S61oracle，此文件在系统启动时根据运行级别执行，此文件是指向/etc/init.d/oracle文件。启动时系统向此文件发送一个start参数，执行oracle文件中的start分支。另外还会在
 
 ```
+
 /etc/rc.d/rc0.d
 /etc/rc.d/rc1.d
 /etc/rc.d/rc6.d
@@ -861,8 +758,6 @@ root@localhost oracle]# chkconfig --level 2345 oracle on
 
 说明：设置oracle脚本在运行级别为2、3、4、5时，都是on（开启）状态，off为关闭
 
-
-
 ### 7、查看oracle自动启动设置
 
 ```shell
@@ -876,8 +771,6 @@ oracle          0:关    1:关    2:开    3:开    4:开    5:开    6:关
 #等级5表示：带图形界面的多用户模式
 #等级6表示：重新启动
 ```
-
-
 
 ### 8、手动创建符号链接文件
 
@@ -903,7 +796,6 @@ oracle          0:关    1:关    2:开    3:开    4:开    5:开    6:关
 [root@localhost oracle]# service oracle stop
 #重启
 [root@localhost oracle]# service oracle restart
-
 ```
 
 ## 七、数据库字符集修改
@@ -922,13 +814,12 @@ PS:没有操作过，从参考文档摘过来的
 [oracle@localhost ~]$ shellplus /nolog
 shell*Plus: Release 11.2.0.1.0 Production on Wed Jan 24 13:55:51 2018
 Copyright (c) 1982, 2009, Oracle.  All rights reserved.
-shell> conn /as sysdba
+SQL> conn /as sysdba
 Connected to an idle instance.                  #数据库未启动，先启动数据库。最好将数据库设未开机启动
-shell> startup
-shell> conn /as sysdba
+SQL> startup
+SQL> conn /as sysdba
 Connected.                                      #连接成功
-shell> select userenv('language') from dual;      #server端字符集查询
-
+SQL> select userenv('language') from dual;      #server端字符集查询
 
 USERENV('LANGUAGE')
 ----------------------------------------------------
@@ -939,21 +830,21 @@ AMERICAN_AMERICA.ZHS16GBK
 依次执行如下命令
 
 ```shell
-shell>SHUTDOWN IMMEDIATE;
-shell>STARTUP MOUNT;
-shell>ALTER SYSTEM ENABLE RESTRICTED SESSION;
-shell>ALTER SYSTEM SET JOB_QUEUE_PROCESSES=0;
-shell>ALTER SYSTEM SET AQ_TM_PROCESSES=0;
-shell>ALTER DATABASE OPEN;
-shell>ALTER DATABASE CHARACTER SET INTERNAL_USE AL32UTF8;
-shell>SHUTDOWN IMMEDIATE;
-shell>STARTUP;
+SQL>SHUTDOWN IMMEDIATE;
+SQL>STARTUP MOUNT;
+SQL>ALTER SYSTEM ENABLE RESTRICTED SESSION;
+SQL>ALTER SYSTEM SET JOB_QUEUE_PROCESSES=0;
+SQL>ALTER SYSTEM SET AQ_TM_PROCESSES=0;
+SQL>ALTER DATABASE OPEN;
+SQL>ALTER DATABASE CHARACTER SET INTERNAL_USE AL32UTF8;
+SQL>SHUTDOWN IMMEDIATE;
+SQL>STARTUP;
 
-shell> select userenv('language') from dual;
+SQL> select userenv('language') from dual;
 USERENV('LANGUAGE')
 ----------------------------------------------------
 AMERICAN_AMERICA.AL32UTF8
-shell> 
+SQL> 
 
 ```
 
@@ -983,12 +874,7 @@ export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK                #客户端字符集
 
 ```
 
-[参考文档]
+## [八、参考文档](https://oracle-base.com/)
 
-[https://docs.oracle.com/cd/E11882_01/install.112/e47689/toc.htm(官网)](https://docs.oracle.com/cd/E11882_01/install.112/e47689/toc.htm(%E5%AE%98%E7%BD%91))
+### [官方文档](https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7)
 
-<https://blog.csdn.net/lqdyx/article/details/78999761>
-
-<https://www.cnblogs.com/nichoc/p/6417505.html>
-
-<https://www.cnblogs.com/VoiceOfDreams/p/8308601.html>
