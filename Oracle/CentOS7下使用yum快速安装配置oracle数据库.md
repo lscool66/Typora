@@ -4,8 +4,7 @@
 
 ```markdown
 操作系统：CentOS Linux release 7.3.1611 (Core)
-
-IP： 192.168.230.141123
+IP： 192.168.230.141
 ```
 
 ## 原理
@@ -316,7 +315,7 @@ Retype new password:
 passwd: all authentication tokens updated successfully.123456
 ```
 
-## 安装oracle数据库
+## 2、安装oracle数据库
 
 新建目录OraDB11g并将下载好的oracle安装包放入其中
 
@@ -371,6 +370,7 @@ Typical path for xclock: /usr/X11R6/bin/xclock
 执行失败并报错DISPLAY not set. Please set the DISPLAY and try again.
 
 这是由于未配置图形显示 
+
 根据提示进行处理：
 
 ```shell
@@ -388,6 +388,7 @@ xhost:  unable to open display "192.168.1.128:0.0"123
 ```
 
 发现依然无法使用 
+
 重置DISPLAY配置：
 
 ```vim
@@ -414,15 +415,15 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2017-10-09_08
 弹出安装界面： 
 将接受oracle支持项取消，下一步
 
-![img](https://blog.csdn.net/sunbocong/article/details/1.png)![这里写图片描述](https://img-blog.csdn.net/20171010145422317?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+!![下一步](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010145422317)
 
 选择跳过软件自动更新服务，下一步
 
-![img](https://blog.csdn.net/sunbocong/article/details/2.png)![这里写图片描述](https://img-blog.csdn.net/20171010145506496?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![跳过自动更新](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010145506496)
 
 选择创建一个数据库系统，下一步
 
-![这里写图片描述](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010145521228)
+![创建数据库](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010145521228)
 
 选择桌面系统（我只是实验环境，不是为了搭建服务器环境），下一步
 
@@ -430,15 +431,15 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2017-10-09_08
 
 配置默认数据库实例，并设置密码（我使用的是简单密码，所以会有警告），下一步
 
-![这里写图片描述](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010145620086)
+![配置数据库安装路径](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010145620086)
 
 选择数据库用户分组，这里使用默认的oinstall组，下一步
 
-![这里写图片描述](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010150510571)
+![配置环境路径](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010150510571)
 
 自动检测数据库安装环境
 
-![这里写图片描述](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010150840670)
+![检测安装条件](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010150840670)
 
 这里我检测出来缺少2个包：
 
@@ -529,19 +530,19 @@ Nothing to do
 
 点选check again，现在只剩一个警告了，选择忽略全部，下一步
 
-![img](https://blog.csdn.net/sunbocong/article/details/8.png)![这里写图片描述](https://img-blog.csdn.net/20171010151106713?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![再次检查](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010151106713)
 
 观看生成的简报，确认配置无误后，下一步
 
-![img](https://blog.csdn.net/sunbocong/article/details/9.png)![这里写图片描述](https://img-blog.csdn.net/20171010151359306?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![生成简报](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010151359306)
 
 弹出信息，确认默认实例的配置情况以及em连接方式，下一步
 
-![img](https://blog.csdn.net/sunbocong/article/details/10.png)![这里写图片描述](https://img-blog.csdn.net/20171010151658470?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![确认](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010151658470)
 
 此时弹出提示，需要打开新的窗口按指示执行sh语句
 
-![img](https://blog.csdn.net/sunbocong/article/details/11.png)![这里写图片描述](https://img-blog.csdn.net/20171010151742327?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![执行两个脚本](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010151742327)
 
 ```shell
 [root@localhost ~]# /home/oracle/app/oraInventory/orainstRoot.sh
@@ -574,7 +575,7 @@ Finished product-specific root actions.
 
 完成后点击ok，开始正式安装，完成后画面如下图，关闭窗口
 
-![img](https://blog.csdn.net/sunbocong/article/details/12.png)![这里写图片描述](https://img-blog.csdn.net/20171010152022821?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VuYm9jb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![完成安装](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20171010152022821)
 
 ## 配置环境变量
 
@@ -628,6 +629,5 @@ STATUS
 OPEN
 ```
 
-参考[如何简化 Oracle Linux 6 上的 Oracle Database 11g 安装](http://www.oracle.com/technetwork/cn/articles/servers-storage-admin/ginnydbinstallonlinux6-1845247-zhs.html) 
 参考[Oracle 公共 yum 信息库](http://public-yum.oracle.com/) 
-参考[Oracle 数据库11g文档](http://docs.oracle.com/cd/E11882_01/index.htm)
+参考[Oracle 数据库11g文档](https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7)
