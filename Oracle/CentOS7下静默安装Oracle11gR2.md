@@ -27,7 +27,7 @@ http://yum.oracle.com/faq.html#a10
 
 
 ```sh
-[root@centos706 ~]# wget https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+[root@ol7-112 ~]# wget https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 --2020-07-13 01:15:08--  https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7
 Resolving yum.oracle.com (yum.oracle.com)... 23.60.72.193
 Connecting to yum.oracle.com (yum.oracle.com)|23.60.72.193|:443... connected.
@@ -39,7 +39,7 @@ Saving to: ‘/etc/pki/rpm-gpg/RPM-GPG-KEY-oracle’
 
 2020-07-13 01:15:11 (102 MB/s) - ‘/etc/pki/rpm-gpg/RPM-GPG-KEY-oracle’ saved [1011/1011]
 
-[root@centos706 ~]# gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+[root@ol7-112 ~]# gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpg: new configuration file `/root/.gnupg/gpg.conf' created
 gpg: WARNING: options in `/root/.gnupg/gpg.conf' are not yet active during this run
 pub  2048R/EC551F03 2010-07-01 Oracle OSS group (Open Source Software group) <build@oss.oracle.com>
@@ -60,13 +60,13 @@ https://yum.oracle.com/getting-started.html#installing-software-from-oracle-linu
 
 
 ```shell
-[root@centos706 ~]# echo "[ol7_latest]" >> /etc/yum.repos.d/ol7-temp.repo
-[root@centos706 ~]# echo "name=Oracle Linux $releasever Latest ($basearch)" >> /etc/yum.repos.d/ol7-temp.repo
-[root@centos706 ~]# echo 'baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/' >> /etc/yum.repos.d/ol7-temp.repo 
-[root@centos706 ~]# echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle" >> /etc/yum.repos.d/ol7-temp.repo
-[root@centos706 ~]# echo "gpgcheck=1" >> /etc/yum.repos.d/ol7-temp.repo
-[root@centos706 ~]# echo "enabled=1" >> /etc/yum.repos.d/ol7-temp.repo
-[root@centos706 ~]# cat /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# echo "[ol7_latest]" >> /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# echo "name=Oracle Linux $releasever Latest ($basearch)" >> /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# echo 'baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/' >> /etc/yum.repos.d/ol7-temp.repo 
+[root@ol7-112 ~]# echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle" >> /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# echo "gpgcheck=1" >> /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# echo "enabled=1" >> /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# cat /etc/yum.repos.d/ol7-temp.repo
 [ol7_latest]
 name=Oracle Linux  Latest ()
 baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/
@@ -76,7 +76,7 @@ enabled=1
 #注意上面第三行是单引号
 
 
-[root@centos706 ~]# yum install oraclelinux-release-el7
+[root@ol7-112 ~]# yum install oraclelinux-release-el7
 Loaded plugins: fastestmirror, langpacks
 Loading mirror speeds from cached hostfile
  * base: mirrors.bfsu.edu.cn
@@ -132,8 +132,8 @@ Installed:
 Complete!
 
 
-[root@centos706 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
-[root@centos706 ~]# ls /etc/yum.repos.d/
+[root@ol7-112 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
+[root@ol7-112 ~]# ls /etc/yum.repos.d/
 CentOS-Base.repo  CentOS-Debuginfo.repo  CentOS-Media.repo    CentOS-Vault.repo          ol7-temp.repo.disabled
 CentOS-CR.repo    CentOS-fasttrack.repo  CentOS-Sources.repo  CentOS-x86_64-kernel.repo
 
@@ -146,13 +146,13 @@ https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linu
 ![image-20200714083042862](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714083042862.png)
 
 ```shell
-[root@centos706 ~]# echo "192.168.131.106 ol7-112.localdomain  ol7-112" >> /etc/hosts
-[root@centos706 ~]# cat /etc/hosts
+[root@ol7-112 ~]# echo "192.168.131.106 ol7-112.localdomain  ol7-112" >> /etc/hosts
+[root@ol7-112 ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.131.106 ol7-112.localdomain  ol7-112
-[root@centos706 ~]# hostnamectl set-hostname ol7-112.localdomain
-[root@centos706 ~]# cat /etc/hostname
+[root@ol7-112 ~]# hostnamectl set-hostname ol7-112.localdomain
+[root@ol7-112 ~]# cat /etc/hostname
 ol7-112.localdomain
 ```
 
@@ -167,7 +167,7 @@ https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linu
 ![image-20200714081621519](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714081621519.png)
 
 ```shell
-[root@centos706 ~]# yum search oracle-rdbms
+[root@ol7-112 ~]# yum search oracle-rdbms
 Loaded plugins: fastestmirror, langpacks
 Repository ol7_latest is listed more than once in the configuration
 Loading mirror speeds from cached hostfile
@@ -186,7 +186,7 @@ oracle-rdbms-server-12cR1-preinstall.x86_64 : Sets the system for Oracle Databas
 ```
 
 ```shell
-[root@centos706 ~]# yum install oracle-rdbms-server-11gR2-preinstall
+[root@ol7-112 ~]# yum install oracle-rdbms-server-11gR2-preinstall
 Loaded plugins: fastestmirror, langpacks
 Repository ol7_latest is listed more than once in the configuration
 Loading mirror speeds from cached hostfile
@@ -276,7 +276,7 @@ https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linu
 #### 修改Oracle用户密码
 
 ```shell
-[root@centos706 ~]# passwd oracle
+[root@ol7-112 ~]# passwd oracle
 Changing password for user oracle.
 New password:
 BAD PASSWORD: The password is shorter than 8 characters
@@ -287,10 +287,10 @@ passwd: all authentication tokens updated successfully.
 #### 禁用selinux
 
 ```shell
-[root@centos706 ~]# sed -i "s/SELINUX=disabled/SELINUX=permissive/" /etc/selinux/config
-[root@centos706 ~]# setenforce Permissive
+[root@ol7-112 ~]# sed -i "s/SELINUX=disabled/SELINUX=permissive/" /etc/selinux/config
+[root@ol7-112 ~]# setenforce Permissive
 setenforce: SELinux is disabled
-[root@centos706 ~]# cat /etc/selinux/config
+[root@ol7-112 ~]# cat /etc/selinux/config
 
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
@@ -308,16 +308,16 @@ SELINUXTYPE=targeted
 #### 关闭防火墙
 
 ```shell
-[root@centos706 ~]# systemctl stop firewalld
-[root@centos706 ~]# systemctl disable firewalld
+[root@ol7-112 ~]# systemctl stop firewalld
+[root@ol7-112 ~]# systemctl disable firewalld
 ```
 
 #### 创建文件夹并赋予用户权限
 
 ```shell
-[root@centos706 ~]# mkdir -p /u01/app/oracle/product/11.2.0/dbhome_1
-[root@centos706 ~]# chown -R oracle:oinstall /u01
-[root@centos706 ~]# chmod -R 775 /u01
+[root@ol7-112 ~]# mkdir -p /u01/app/oracle/product/11.2.0/dbhome_1
+[root@ol7-112 ~]# chown -R oracle:oinstall /u01
+[root@ol7-112 ~]# chmod -R 775 /u01
 ```
 
 
@@ -331,7 +331,7 @@ SELINUXTYPE=targeted
 **建议使用我给出的环境变量如下：**
 
 ```shell
-[root@centos706 ~]# su oracle
+[root@ol7-112 ~]# su oracle
 [oracle@ol7-112 root]$ cd
 [oracle@ol7-112 ~]$ vim .bash_profile
 ```
