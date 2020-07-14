@@ -332,8 +332,8 @@ SELINUXTYPE=targeted
 
 ```shell
 [root@centos706 ~]# su oracle
-[oracle@ol7 root]$ cd
-[oracle@ol7 ~]$ vim .bash_profile
+[oracle@ol7-112 root]$ cd
+[oracle@ol7-112 ~]$ vim .bash_profile
 ```
 
 
@@ -382,7 +382,7 @@ export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
 #### 上传数据库文件
 
 ```shell
-[oracle@ol7 u01]$ ll
+[oracle@ol7-112 u01]$ ll
 total 2295592
 drwxrwxr-x 3 oracle oinstall         20 Jul 13 01:53 app
 -rw-r--r-- 1 oracle oinstall 1239269270 Jul 13 00:54 linux.x64_11gR2_database_1of2.zip
@@ -394,9 +394,9 @@ drwxrwxr-x 3 oracle oinstall         20 Jul 13 01:53 app
 #### 解压数据库
 
 ```shell
-[oracle@ol7 u01]$ unzip linux.x64_11gR2_database_1of2.zip
-[oracle@ol7 u01]$ unzip linux.x64_11gR2_database_2of2.zip
-[oracle@ol7 u01]$ ll
+[oracle@ol7-112 u01]$ unzip linux.x64_11gR2_database_1of2.zip
+[oracle@ol7-112 u01]$ unzip linux.x64_11gR2_database_2of2.zip
+[oracle@ol7-112 u01]$ ll
 total 2295592
 drwxrwxr-x 3 oracle oinstall         20 Jul 13 01:53 app
 drwxr-xr-x 8 oracle oinstall        128 Aug 20  2009 database
@@ -658,7 +658,7 @@ Database creation complete. For details check the logfiles at:
  /u01/app/oracle/cfgtoollogs/dbca/orcl.
 Database Information:
 Global Database Name:orcl
-System Identifier(SID):orclThe Database Control URL is http://ol7.localdomain:1158/em
+System Identifier(SID):orclThe Database Control URL is http://ol7-112.localdomain:1158/em
 ```
 
 #### 最后提示用root用户执行以下两个脚本
@@ -871,9 +871,7 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 省略...
 ```
 
-![image-20200714091324230](../../../AppData/Roaming/Typora/typora-user-images/image-20200714091324230.png)
-
-
+![dbstartimage-20200714091324230](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/dbstartimage-20200714091324230.png)
 
 
 
