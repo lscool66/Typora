@@ -657,9 +657,9 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 
 # Web Interface
 
-export ORACLE_BASE=/home/oracle/app/oracle #根据个人情况修改路径
+export ORACLE_BASE=/home/oracle/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1
-export ORACLE_SID=orcl #改成自己的ORACLE_SID:testsid
+export ORACLE_SID=orcl
 export PATH=$PATH:$ORACLE_HOME/bin
 ORA_OWNR="oracle"
 
@@ -699,7 +699,6 @@ echo $"Usage: `basename $0` {start|stop|restart|reload}"
 exit 1
 esac
 exit 0
-
 ```
 
 ### 4、更改oracle脚本的执行权限
@@ -738,7 +737,6 @@ ps:当这个命令被执行的时候，会去脚本文件oracle中寻找# chkcon
 中创建符号连接文件S61oracle，此文件在系统启动时根据运行级别执行，此文件是指向/etc/init.d/oracle文件。启动时系统向此文件发送一个start参数，执行oracle文件中的start分支。另外还会在
 
 ```
-
 /etc/rc.d/rc0.d
 /etc/rc.d/rc1.d
 /etc/rc.d/rc6.d

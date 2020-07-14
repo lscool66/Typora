@@ -1,8 +1,5 @@
-# centos7静默安装oracle11gR2
+## centos7静默安装oracle11gR2
 
-
-
-### 文章目录
 
 [TOC]
 
@@ -27,7 +24,7 @@ PS：还有其他硬件要求可以直接去官网([传送门](https://docs.orac
   - linux.x64_11gR2_database_1of2.zip
   - linux.x64_11gR2_database_2of2.zip
 
-  PS:官方下载地址：[传送门](https://www.oracle.com/technetwork/cn/database/enterprise-edition/downloads/index.html)；
+  PS:官方下载地址：[传送门](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html)；
 
 ### 二、环境准备
 
@@ -204,11 +201,18 @@ drwxr-xr-x. 3 oracle oinstall         21 3月   4 14:56 oracle
 
 - **配置应答文件**
 
+
+
 ```shell
 #修改安装应答
 [oracle@zhangyi-fedora response]$ vi db_install.rsp
 #可以通过改命令查看文件内容，下列是修改后的内容值
 [oracle@zhangyi-fedora response]$ cat db_install.rsp | grep -v "#"|grep -v "^$"
+```
+
+
+
+```properties
 oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_schema_v11_2_0
 oracle.install.option=INSTALL_DB_AND_CONFIG
 ORACLE_HOSTNAME=zhangyi-fedora #(不知道的可以通过hostname命令查询 ps:需要配置/etc/hosts文件末尾加上主机IP 主机名称)
@@ -255,7 +259,7 @@ SECURITY_UPDATES_VIA_MYORACLESUPPORT=false
 DECLINE_SECURITY_UPDATES=true
 PROXY_HOST=
 PROXY_PORT=
-PROXY_USER=
+PROXY_USER=	
 PROXY_PWD=
 ```
 
@@ -264,7 +268,7 @@ PROXY_PWD=
 ```linux
 vim /home/oracle/oraInst.loc 
 #其内容如下：
-inventory_loc=/home/oracle/app/app/oraInventory
+inventory_loc=/u01/app/oraInventory
 inst_group=oinstall
 #开放权限:
 chown oracle:oinstall /home/oracle/oraInst.loc

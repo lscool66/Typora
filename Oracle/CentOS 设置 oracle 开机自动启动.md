@@ -1,6 +1,6 @@
 ### CentOS 设置 oracle 开机自动启动
 
-###### 1、编辑oratab文件
+#### 1、编辑oratab文件
 
 ```shell
 [root@localhost ~]# vim /etc/oratab
@@ -46,7 +46,7 @@ orcl:/data/oracle/product/11.2.0/db_1:Y
 
 
 
-###### 2、编辑/etc/rc.d/rc.local
+#### 2、编辑/etc/rc.d/rc.local
 
 ```
 [root@localhost init.d]# vim /etc/rc.d/rc.local
@@ -80,7 +80,7 @@ orcl:/data/oracle/product/11.2.0/db_1:Y
 
 
 
-###### 3、创建/etc/init.d/oracle
+#### 3、创建/etc/init.d/oracle
 
 ```
 [root@localhost init.d]# vim /etc/init.d/oracle
@@ -149,14 +149,14 @@ exit 0
 
 
 
-###### 4、赋予/etc/rc.d/init.d执行权限
+#### 4、赋予/etc/rc.d/init.d执行权限
 
 ```
 [root@localhost init.d]# cd /etc/rc.d/init.d
 [root@localhost init.d]# chmod +x oracle
 ```
 
-###### 5、测试脚本
+#### 5、测试脚本
 
 ```
 [root@localhost init.d]# ./oracle start
@@ -188,7 +188,7 @@ Oracle Stop Succesful!OK.
 
 
 
-###### 6、修改/data/oracle/product/11.2.0/db_1/bin/dbstart文件
+#### 6、修改/data/oracle/product/11.2.0/db_1/bin/dbstart文件
 
 ```
 [root@localhost init.d]# vim /data/oracle/product/11.2.0/db_1/bin/dbstart
@@ -206,7 +206,7 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 
 
 
-###### 7、修改/data/oracle/product/11.2.0/db_1/bin/dbshut
+#### 7、修改/data/oracle/product/11.2.0/db_1/bin/dbshut
 
 ```
 [root@localhost init.d]# vim /data/oracle/product/11.2.0/db_1/bin/dbshut
@@ -225,7 +225,7 @@ if [ ! $ORACLE_HOME_LISTNER ] ; then
 
 
 
-###### 8、测试脚本
+#### 8、测试脚本
 
 ```
 [root@localhost init.d]# ./oracle start
@@ -240,7 +240,7 @@ Oracle Start Succesful!OK.
 
 
 
-###### 9、创建启动连接
+#### 9、创建启动连接
 
 ```
 [root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc2.d/S61oracle
@@ -250,7 +250,7 @@ Oracle Start Succesful!OK.
 [root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc6.d/S61oracle
 ```
 
-###### 10、查看启动连接
+#### 10、查看启动连接
 
 ```
 [root@localhost init.d]# ll /etc/rc0.d/
@@ -267,7 +267,7 @@ lrwxrwxrwx 1 root root 23 Dec 1 17:31 S61oracle -/etc/rc.d/init.d/oracle
 
 
 
-###### 11、添加启动服务
+#### 11、添加启动服务
 
 ```
 [root@localhost init.d]# chkconfig --level 234 oracle on
