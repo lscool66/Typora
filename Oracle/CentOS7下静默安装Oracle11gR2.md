@@ -1,10 +1,16 @@
-### 0、系统配置
+### 1、系统配置
 
-#### 硬盘空间越大越好我这里500g
 
-#### 虚拟环境至少2g内存
 
-#### 下载安装包（需要注册账号）
+#### 1、硬盘空间越大越好我这里500g
+
+
+
+#### 2、虚拟环境至少2g内存
+
+
+
+#### 3、下载安装包（需要注册账号）
 
 https://www.oracle.com/database/technologies/112010-linx8664soft.html
 
@@ -14,7 +20,30 @@ https://www.oracle.com/database/technologies/112010-linx8664soft.html
 
 
 
-### 1、添加gpg
+#### 4、修改主机名
+
+根据自己情况配置主机名称，我这里使用官网给出的主机名并加以修改
+
+https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
+
+![image-20200714083042862](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714083042862.png)
+
+```shell
+[root@ol7-112 ~]# echo "192.168.131.106 ol7-112.localdomain  ol7-112" >> /etc/hosts
+[root@ol7-112 ~]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.131.106 ol7-112.localdomain  ol7-112
+[root@ol7-112 ~]# hostnamectl set-hostname ol7-112.localdomain
+[root@ol7-112 ~]# cat /etc/hostname
+ol7-112.localdomain
+```
+
+
+
+### 2、安装Oracle11gR2预装包
+
+#### 1、添加gpg
 
 http://yum.oracle.com/faq.html#a10
 
@@ -44,10 +73,13 @@ gpg: new configuration file `/root/.gnupg/gpg.conf' created
 gpg: WARNING: options in `/root/.gnupg/gpg.conf' are not yet active during this run
 pub  2048R/EC551F03 2010-07-01 Oracle OSS group (Open Source Software group) <build@oss.oracle.com>
       Key fingerprint = 4214 4123 FECF C55B 9086  313D 72F9 7B74 EC55 1F03
-
 ```
 
-### 2、添加yum源
+
+
+#### 2、添加yum源
+
+##### 方法1：
 
 https://yum.oracle.com/getting-started.html#installing-software-from-oracle-linux-yum-server
 
@@ -57,25 +89,53 @@ https://yum.oracle.com/getting-started.html#installing-software-from-oracle-linu
 
 
 
+###### 第一步备份原来yum源
 
+```shell
+[root@ol7-112 ~]# mkdir -p /etc/yum.repos.d/backup
+[root@ol7-112 ~]# mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/backup/
+[root@ol7-112 ~]# ll /etc/yum.repos.d/
+total 0
+[root@ol7-112 ~]# ll /etc/yum.repos.d/backup/
+total 36
+-rw-r--r--. 1 root root 1664 Apr  7 18:01 CentOS-Base.repo
+-rw-r--r--. 1 root root 1309 Apr  7 18:01 CentOS-CR.repo
+-rw-r--r--. 1 root root  649 Apr  7 18:01 CentOS-Debuginfo.repo
+-rw-r--r--. 1 root root  314 Apr  7 18:01 CentOS-fasttrack.repo
+-rw-r--r--. 1 root root  630 Apr  7 18:01 CentOS-Media.repo
+-rw-r--r--. 1 root root 1331 Apr  7 18:01 CentOS-Sources.repo
+-rw-r--r--. 1 root root 7577 Apr  7 18:01 CentOS-Vault.repo
+-rw-r--r--. 1 root root  616 Apr  7 18:01 CentOS-x86_64-kernel.repo
+```
+
+
+
+
+###### 第二部创建临时yum源：
 
 ```shell
 [root@ol7-112 ~]# echo "[ol7_latest]" >> /etc/yum.repos.d/ol7-temp.repo
-[root@ol7-112 ~]# echo "name=Oracle Linux $releasever Latest ($basearch)" >> /etc/yum.repos.d/ol7-temp.repo
+[root@ol7-112 ~]# echo 'name=Oracle Linux $releasever Latest ($basearch)' >> /etc/yum.repos.d/ol7-temp.repo
 [root@ol7-112 ~]# echo 'baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/' >> /etc/yum.repos.d/ol7-temp.repo 
 [root@ol7-112 ~]# echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle" >> /etc/yum.repos.d/ol7-temp.repo
 [root@ol7-112 ~]# echo "gpgcheck=1" >> /etc/yum.repos.d/ol7-temp.repo
 [root@ol7-112 ~]# echo "enabled=1" >> /etc/yum.repos.d/ol7-temp.repo
 [root@ol7-112 ~]# cat /etc/yum.repos.d/ol7-temp.repo
 [ol7_latest]
-name=Oracle Linux  Latest ()
+name=name=Oracle Linux $releasever Latest ($basearch)
 baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpgcheck=1
 enabled=1
-#注意上面第三行是单引号
+```
+
+#注意上面第二、三行是单引号
 
 
+
+###### 第三步安装ol7的yum源：
+
+```shell
 [root@ol7-112 ~]# yum install oraclelinux-release-el7
 Loaded plugins: fastestmirror, langpacks
 Loading mirror speeds from cached hostfile
@@ -130,41 +190,153 @@ Installed:
   oraclelinux-release-el7.x86_64 0:1.0-12.1.el7
 
 Complete!
-
-
-[root@ol7-112 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
-[root@ol7-112 ~]# ls /etc/yum.repos.d/
-CentOS-Base.repo  CentOS-Debuginfo.repo  CentOS-Media.repo    CentOS-Vault.repo          ol7-temp.repo.disabled
-CentOS-CR.repo    CentOS-fasttrack.repo  CentOS-Sources.repo  CentOS-x86_64-kernel.repo
-
 ```
 
-### 3、修改主机名
 
-https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
 
-![image-20200714083042862](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714083042862.png)
+###### 第四步屏蔽临时yum源
 
 ```shell
-[root@ol7-112 ~]# echo "192.168.131.106 ol7-112.localdomain  ol7-112" >> /etc/hosts
-[root@ol7-112 ~]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.131.106 ol7-112.localdomain  ol7-112
-[root@ol7-112 ~]# hostnamectl set-hostname ol7-112.localdomain
-[root@ol7-112 ~]# cat /etc/hostname
-ol7-112.localdomain
+[root@ol7-112 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
 ```
 
 
 
-### 4、安装Oracle11gR2预装包
+###### 第五步查看安装的yum源：
+
+```shell
+[root@ol7-112 ~]# ll /etc/yum.repos.d/
+total 12
+drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
+-rw-r--r-- 1 root root 3835 Jul  8 17:27 oracle-linux-ol7.repo
+-rw-r--r-- 1 root root 2587 Jul  8 17:25 uek-ol7.repo
+-rw-r--r-- 1 root root  226 Jul  8 17:25 virt-ol7.repo
+-rw-r--r-- 1 root root  226 Jul  8 17:25 ol7-temp.repo.disabled
+```
+
+
+
+##### 方法2：
+
+https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/index.html
+
+
+
+###### 第一步备份原来yum源
+
+```shell
+[root@ol7-112 ~]# mkdir -p /etc/yum.repos.d/backup
+[root@ol7-112 ~]# mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/backup/
+[root@ol7-112 ~]# ll /etc/yum.repos.d/
+total 0
+[root@ol7-112 ~]# ll /etc/yum.repos.d/backup/
+total 36
+-rw-r--r--. 1 root root 1664 Apr  7 18:01 CentOS-Base.repo
+-rw-r--r--. 1 root root 1309 Apr  7 18:01 CentOS-CR.repo
+-rw-r--r--. 1 root root  649 Apr  7 18:01 CentOS-Debuginfo.repo
+-rw-r--r--. 1 root root  314 Apr  7 18:01 CentOS-fasttrack.repo
+-rw-r--r--. 1 root root  630 Apr  7 18:01 CentOS-Media.repo
+-rw-r--r--. 1 root root 1331 Apr  7 18:01 CentOS-Sources.repo
+-rw-r--r--. 1 root root 7577 Apr  7 18:01 CentOS-Vault.repo
+-rw-r--r--. 1 root root  616 Apr  7 18:01 CentOS-x86_64-kernel.repo
+```
+
+
+
+###### 第二步直接下载rpm包
+
+![image-20200715113449139](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200715113449139.png)
+
+
+
+```shell
+[root@ol7-112 ~]# wget https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm
+--2020-07-14 23:41:28--  https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm
+Resolving yum.oracle.com (yum.oracle.com)... 184.26.80.128
+Connecting to yum.oracle.com (yum.oracle.com)|184.26.80.128|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 19312 (19K) [application/x-rpm]
+Saving to: ‘oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm.1’
+
+100%[===============================================================================================================================>] 19,312      --.-K/s   in 0.02s
+
+2020-07-14 23:41:30 (870 KB/s) - ‘oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm.1’ saved [19312/19312]
+```
+
+
+
+###### 第三步本地安装：
+
+```shell
+[root@ol7-112 ~]# yum localinstall oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm
+Loaded plugins: fastestmirror, langpacks
+Examining oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm: oraclelinux-release-el7-1.0-12                                                                                .1.el7.x86_64
+Marking oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package oraclelinux-release-el7.x86_64 0:1.0-12.1.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=========================================================================================
+ Package          Arch   Version      Repository                                    Size
+=========================================================================================
+Installing:
+ oraclelinux-release-el7
+                  x86_64 1.0-12.1.el7 /oraclelinux-release-el7-1.0-12.1.el7.x86_64  29 k
+
+Transaction Summary
+=========================================================================================
+Install  1 Package
+
+Total size: 29 k
+Installed size: 29 k
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : oraclelinux-release-el7-1.0-12.1.el7.x86_64                           1/1
+  Verifying  : oraclelinux-release-el7-1.0-12.1.el7.x86_64                           1/1
+
+Installed:
+  oraclelinux-release-el7.x86_64 0:1.0-12.1.el7
+
+Complete!
+```
+
+
+
+###### 第四步查看安装的：
+
+```shell
+[root@ol7-112 ~]# ll /etc/yum.repos.d/
+total 12
+drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
+-rw-r--r-- 1 root root 3835 Jul  8 17:27 oracle-linux-ol7.repo
+-rw-r--r-- 1 root root 2587 Jul  8 17:25 uek-ol7.repo
+-rw-r--r-- 1 root root  226 Jul  8 17:25 virt-ol7.repo
+```
+
+
+
+#### 3、安装Oracle11gR2预装包
+
+
 
 https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
+
+
 
 
 
 ![image-20200714081621519](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714081621519.png)
+
+
+
+##### 第一步开始安装
 
 ```shell
 [root@ol7-112 ~]# yum search oracle-rdbms
@@ -265,7 +437,79 @@ Dependency Updated:
 Complete!
 ```
 
-### 5、其他配置
+
+
+##### 第二步卸载ol7 yum源
+
+```shell
+[root@ol7-112 ~]# yum remove oraclelinux-release-el7.x86_64
+Loaded plugins: fastestmirror, langpacks
+Resolving Dependencies
+--> Running transaction check
+---> Package oraclelinux-release-el7.x86_64 0:1.0-12.1.el7 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================================
+ Package                                      Arch                        Version                             Repository                                                          Size
+=======================================================================================================================================================================================
+Removing:
+ oraclelinux-release-el7                      x86_64                      1.0-12.1.el7                        @/oraclelinux-release-el7-1.0-12.1.el7.x86_64                       29 k
+
+Transaction Summary
+=======================================================================================================================================================================================
+Remove  1 Package
+
+Installed size: 29 k
+Is this ok [y/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : oraclelinux-release-el7-1.0-12.1.el7.x86_64                                                                                                                         1/1
+  Verifying  : oraclelinux-release-el7-1.0-12.1.el7.x86_64                                                                                                                         1/1
+
+Removed:
+  oraclelinux-release-el7.x86_64 0:1.0-12.1.el7
+
+Complete!
+
+```
+
+##### 第三步还原yum源
+
+```shell
+[root@ol7-112 ~]# ll /etc/yum.repos.d/
+total 0
+drwxr-xr-x 2 root root 220 Jul 14 22:58 backup
+[root@ol7-112 ~]# mv /etc/yum.repos.d/backup/* /etc/yum.repos.d/
+[root@ol7-112 ~]# ll /etc/yum.repos.d/
+total 36
+drwxr-xr-x  2 root root    6 Jul 14 23:28 backup
+-rw-r--r--. 1 root root 1664 Apr  7 18:01 CentOS-Base.repo
+-rw-r--r--. 1 root root 1309 Apr  7 18:01 CentOS-CR.repo
+-rw-r--r--. 1 root root  649 Apr  7 18:01 CentOS-Debuginfo.repo
+-rw-r--r--. 1 root root  314 Apr  7 18:01 CentOS-fasttrack.repo
+-rw-r--r--. 1 root root  630 Apr  7 18:01 CentOS-Media.repo
+-rw-r--r--. 1 root root 1331 Apr  7 18:01 CentOS-Sources.repo
+-rw-r--r--. 1 root root 7577 Apr  7 18:01 CentOS-Vault.repo
+-rw-r--r--. 1 root root  616 Apr  7 18:01 CentOS-x86_64-kernel.repo
+-rw-r--r--. 1 root root  226 Jul  8 17:25 ol7-temp.repo.disabled
+```
+
+
+
+##### 第四步更新yum
+
+```shell
+[root@ol7-112 ~]# yum update
+```
+
+
+
+### 3、其他配置
 
 https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
 
@@ -273,7 +517,7 @@ https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linu
 
 
 
-#### 修改Oracle用户密码
+#### 1、修改Oracle用户密码
 
 ```shell
 [root@ol7-112 ~]# passwd oracle
@@ -284,7 +528,7 @@ Retype new password:
 passwd: all authentication tokens updated successfully.
 ```
 
-#### 禁用selinux
+#### 2、禁用selinux
 
 ```shell
 [root@ol7-112 ~]# sed -i "s/SELINUX=disabled/SELINUX=permissive/" /etc/selinux/config
@@ -305,14 +549,14 @@ SELINUX=permissive
 SELINUXTYPE=targeted
 ```
 
-#### 关闭防火墙
+#### 3、关闭防火墙
 
 ```shell
 [root@ol7-112 ~]# systemctl stop firewalld
 [root@ol7-112 ~]# systemctl disable firewalld
 ```
 
-#### 创建文件夹并赋予用户权限
+#### 4、创建文件夹并赋予用户权限
 
 ```shell
 [root@ol7-112 ~]# mkdir -p /u01/app/oracle/product/11.2.0/dbhome_1
@@ -322,11 +566,11 @@ SELINUXTYPE=targeted
 
 
 
-#### Oracle用户添加环境变量
+#### 5、Oracle用户添加环境变量
 
 ![image-20200714132237807](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714132237807.png)
 
-**上图为官网给出环境变量不太美观缺少几项**
+PS：**上图为官网给出环境变量不太美观缺少几项**
 
 **建议使用我给出的环境变量如下：**
 
@@ -336,7 +580,7 @@ SELINUXTYPE=targeted
 [oracle@ol7-112 ~]$ vim .bash_profile
 ```
 
-
+以下为环境变量
 
 ```shell
 # .bash_profile
@@ -375,11 +619,11 @@ export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
 
 
 
-### 6、安装数据库
+### 4、安装数据库
 
 
 
-#### 上传数据库文件
+#### 1、上传数据库文件
 
 ```shell
 [oracle@ol7-112 u01]$ ll
@@ -391,7 +635,7 @@ drwxrwxr-x 3 oracle oinstall         20 Jul 13 01:53 app
 
 
 
-#### 解压数据库
+#### 2、解压数据库
 
 ```shell
 [oracle@ol7-112 u01]$ unzip linux.x64_11gR2_database_1of2.zip
@@ -404,7 +648,7 @@ drwxr-xr-x 8 oracle oinstall        128 Aug 20  2009 database
 -rw-r--r-- 1 oracle oinstall 1111416131 Jul 13 01:11 linux.x64_11gR2_database_2of2.zip
 ```
 
-#### 配置响应文件
+#### 3、配置响应文件
 
 https://oracle-base.com/articles/misc/oui-silent-installations
 
@@ -412,13 +656,13 @@ https://oracle-base.com/articles/misc/oui-silent-installations
 
 ![image-20200714083354488](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714083354488.png)
 
-#### 响应文件如下，具体配置项请自行查阅
+
 
 ```shell
 [oracle@ol7-112 ~]$ cat /u01/database/response/db_install.rsp | grep -v "#"|grep -v "^$"
 ```
 
-
+##### 响应文件如下，具体如何配置项请自行查阅
 
 ```properties
 oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_schema_v11_2_0
@@ -440,7 +684,7 @@ oracle.install.db.config.starterdb.globalDBName=${ORACLE_UNQNAME}
 oracle.install.db.config.starterdb.SID=${ORACLE_SID}
 oracle.install.db.config.starterdb.characterSet=AL32UTF8
 oracle.install.db.config.starterdb.memoryOption=true
-oracle.install.db.config.starterdb.memoryLimit=900 #特别注意此内存选项
+oracle.install.db.config.starterdb.memoryLimit=900
 oracle.install.db.config.starterdb.installExampleSchemas=true
 oracle.install.db.config.starterdb.enableSecuritySettings=true
 oracle.install.db.config.starterdb.password.ALL=oracle
@@ -473,9 +717,9 @@ PROXY_PWD=
 
 
 
-### 7、 开始安装
+#### 4、 开始安装
 
-
+##### 第一步执行安装脚本
 
 ```shell
 [oracle@ol7-112 ~]$ /u01/database/runInstaller -silent -force -ignorePrereq -responseFile /u01/database/response/db_install.rsp
@@ -493,9 +737,9 @@ You can find the log of this install session at:
  /u01/app/oraInventory/logs/installActions2020-07-13_04-28-49AM.log
 ```
 
-#### 查看日志文件
 
 
+##### 第二步查看日志文件
 
 ```shell
 [root@ol7-112 ~]# tail -f /u01/app/oraInventory/logs/installActions2020-07-13_04-28-49AM.log
@@ -614,9 +858,9 @@ INFO: Shutdown Oracle Database 11g Release 2 Installer
 INFO: Unloading Setup Driver
 ```
 
-#### 查看创建实例日志
 
 
+##### 第三步查看创建实例日志
 
 ```shell
 [root@ol7-112 ~]# cat /u01/app/oracle/cfgtoollogs/dbca/orcl/orcl.log
@@ -661,9 +905,9 @@ Global Database Name:orcl
 System Identifier(SID):orclThe Database Control URL is http://ol7-112.localdomain:1158/em
 ```
 
-#### 最后提示用root用户执行以下两个脚本
 
 
+##### 第四步用root用户执行以下两个脚本
 
 ```shell
 [oracle@ol7-112 ~]$ The following configuration scripts need to be executed as the "root" user. 
@@ -681,6 +925,10 @@ To execute the configuration scripts:
 Successfully Setup Software.
 ```
 
+
+
+###### 1、/u01/app/oraInventory/orainstRoot.sh
+
 ```shell
 [root@ol7-112 ~]# /u01/app/oraInventory/orainstRoot.sh
 Changing permissions of /u01/app/oraInventory.
@@ -689,16 +937,26 @@ Removing read,write,execute permissions for world.
 
 Changing groupname of /u01/app/oraInventory to oinstall.
 The execution of the script is complete.
+```
 
+
+
+###### 2、/u01/app/oracle/product/11.2.0/dbhome_1/root.sh
+
+```shell
 [root@ol7-112 ~]# /u01/app/oracle/product/11.2.0/dbhome_1/root.sh
 Check /u01/app/oracle/product/11.2.0/dbhome_1/install/root_ol7-112.localdomain_2020-07-13_04-48-43.log for the output of root script
 ```
 
-#### 测试连接成功
+
+
+##### 第五步测试连接成功
 
 ![image-20200714084619353](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714084619353.png)
 
-### 8、设置开机自动启动
+
+
+### 5、设置开机自动启动
 
 #### 1、编辑oratab文件
 
@@ -706,7 +964,7 @@ Check /u01/app/oracle/product/11.2.0/dbhome_1/install/root_ol7-112.localdomain_2
 [root@ol7-112 ~]# vim /etc/oratab
 ```
 
-文件内容为：
+##### 文件内容为：
 
 ```properties
 # This file is used by ORACLE utilities.  It is created by root.sh
@@ -730,7 +988,7 @@ Check /u01/app/oracle/product/11.2.0/dbhome_1/install/root_ol7-112.localdomain_2
 orcl:/u01/app/oracle/product/11.2.0/dbhome_1:N
 ```
 
-修改为
+##### 修改为：
 
 ```properties
 # This file is used by ORACLE utilities.  It is created by root.sh
@@ -762,7 +1020,7 @@ orcl:/u01/app/oracle/product/11.2.0/dbhome_1:Y
 [root@ol7-112 ~]# vim /etc/init.d/oracle
 ```
 
-文件内容为：
+##### 文件内容为：
 
 ```shell
 #!/bin/sh
@@ -833,6 +1091,8 @@ exit 0
 -rwxr-xr-x. 1 root root 1007 Jul 13 20:59 /etc/init.d/oracle
 ```
 
+
+
 #### 4、测试脚本
 
 ```shell
@@ -850,7 +1110,7 @@ Oracle Start Succesful!OK.
 
 
 
-#### 5、修改/u01/app/oracle/product/11.2.0/dbhome_1/bin/dbstart文件
+#### 5、修改/u01/app/oracle/product/11.2.0/dbhome_1/bin/dbstart
 
 ```shell
 [root@ol7-112 ~]# vim /u01/app/oracle/product/11.2.0/dbhome_1/bin/dbstart
@@ -897,8 +1157,6 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 ```
 
 ![image-20200714091148534](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714091148534.png)
-
-
 
 
 
