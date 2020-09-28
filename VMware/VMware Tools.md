@@ -1,10 +1,6 @@
 # vmware-install.pl安装VMware Tools
 
-2018年04月20日 12:47:15 [Vis_Stu](https://me.csdn.net/Vis_Stu) 阅读数 4748
 
-
-
- 版权声明：本文为博主原创文章，未经博主允许不得转载。 <https://blog.csdn.net/Vis_Stu/article/details/80007292>
 
 因为需要测试linux环境下shell调用mongodb的方法，所以装了一下虚拟机，系统是linux CentOS 7 64bit。
 
@@ -14,19 +10,21 @@
 
 VMTool的安装文件在VM虚拟机安装目录下的linux.iso中。
 
-![img](https://img-blog.csdn.net/20180419165226755)
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180419165226755)
 
 在虚拟机的光驱设置选项中，选中linux.iso：
 
-![img](https://img-blog.csdn.net/20180419165326973)![img](https://img-blog.csdn.net/20180419165339234)
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180419165326973)
+
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180419165339234)
 
 之后就可以进入linux环境下，调用mount命令将cdrom（光驱）中的文件linux.iso解压到mnt文件夹下：
 
-```
+```shell
 mount /dev/cdrom /mnt/
 ```
 
-![img](https://img-blog.csdn.net/20180419170234612)
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180419170234612)
 
 其中的VMwareTools*.tar.gz就是安装需要的文件了
 
@@ -34,11 +32,11 @@ mount /dev/cdrom /mnt/
 
 解压后调用vmware-tools-distrib中的vmware-install.pl文件，如果执行时出现以下反馈：
 
-![img](https://img-blog.csdn.net/20180419170710655)
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180419170710655)
 
 说明执行pl类型文件的perl未安装，安装perl环境即可。
 
-```
+```shell
 yum install perl*
 ```
 
@@ -50,7 +48,7 @@ yum install perl*
 
 安装gcc和g++编译器
 
-```
+```shell
 yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake
 ```
 
@@ -58,11 +56,8 @@ yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake
 
 安装相关文件
 
-```
+```shell
 yum -y update  
-
-
-
 yum -y install kernel-headers kernel-devel gcc
 ```
 
@@ -70,12 +65,12 @@ yum -y install kernel-headers kernel-devel gcc
 
 正常获取GCC和kernel header path：
 
-![img](https://img-blog.csdn.net/20180420124150774)
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180420124150774)
 
 之后就可以安装成功了（注：中间除了这两个选择no以外，其他询问是否的都选yes，默认地址的都回车确认即可）
 
 另外关于文件分享功能：
 
-![img](https://img-blog.csdn.net/20180420124606747)
+![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20180420124606747)
 
 在分享文件夹中设置对应的路径即可，linux下可以在/mnt/hgfs中获取到对应的文件。
