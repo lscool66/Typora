@@ -108,11 +108,9 @@ total 36
 -rw-r--r--. 1 root root  616 Apr  7 18:01 CentOS-x86_64-kernel.repo
 ```
 
->>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 
-###### 第二部创建临时yum源：
 
-###### 第二部创建临时yum源：
+###### 第二步创建临时yum源：
 
 ```shell
 [root@ol7-112 ~]# echo "[ol7_latest]" >> /etc/yum.repos.d/ol7-temp.repo
@@ -135,8 +133,6 @@ enabled=1
 
 
 ###### 第三步安装ol7的yum源：
-
-
 
 ```shell
 [root@ol7-112 ~]# yum install oraclelinux-release-el7
@@ -197,34 +193,15 @@ Complete!
 
 
 
->>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
-
-###### 第四步屏蔽临时yum源
-
-<<<<<<< HEAD
 ###### 第四步屏蔽临时yum源
 
 ```shell
 [root@ol7-112 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
 ```
 
-
-
 ###### 第五步查看安装的yum源：
 
 ```shell
-=======
-​```shell
-[root@ol7-112 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
-```
-
-
-
-###### 第五步查看安装的yum源：
-
-```shell
-
->>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 [root@ol7-112 ~]# ll /etc/yum.repos.d/
 total 12
 drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
@@ -343,101 +320,11 @@ drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
 >>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 ```
 
-
-
-###### 第二步直接下载rpm包
-
-![image-20200715113449139](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200715113449139.png)
-
-
-
-```shell
-[root@ol7-112 ~]# wget https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm
---2020-07-14 23:41:28--  https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm
-Resolving yum.oracle.com (yum.oracle.com)... 184.26.80.128
-Connecting to yum.oracle.com (yum.oracle.com)|184.26.80.128|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 19312 (19K) [application/x-rpm]
-Saving to: ‘oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm.1’
-
-100%[===============================================================================================================================>] 19,312      --.-K/s   in 0.02s
-
-2020-07-14 23:41:30 (870 KB/s) - ‘oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm.1’ saved [19312/19312]
-```
-
-
-
-###### 第三步本地安装：
-
-```shell
-[root@ol7-112 ~]# yum localinstall oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm
-Loaded plugins: fastestmirror, langpacks
-Examining oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm: oraclelinux-release-el7-1.0-12                                                                                .1.el7.x86_64
-Marking oraclelinux-release-el7-1.0-12.1.el7.x86_64.rpm to be installed
-Resolving Dependencies
---> Running transaction check
----> Package oraclelinux-release-el7.x86_64 0:1.0-12.1.el7 will be installed
---> Finished Dependency Resolution
-
-Dependencies Resolved
-
-=========================================================================================
- Package          Arch   Version      Repository                                    Size
-=========================================================================================
-Installing:
- oraclelinux-release-el7
-                  x86_64 1.0-12.1.el7 /oraclelinux-release-el7-1.0-12.1.el7.x86_64  29 k
-
-Transaction Summary
-=========================================================================================
-Install  1 Package
-
-Total size: 29 k
-Installed size: 29 k
-Is this ok [y/d/N]: y
-Downloading packages:
-Running transaction check
-Running transaction test
-Transaction test succeeded
-Running transaction
-  Installing : oraclelinux-release-el7-1.0-12.1.el7.x86_64                           1/1
-  Verifying  : oraclelinux-release-el7-1.0-12.1.el7.x86_64                           1/1
-
-Installed:
-  oraclelinux-release-el7.x86_64 0:1.0-12.1.el7
-
-Complete!
-```
-
-
-
-###### 第四步查看安装的：
-
-```shell
-[root@ol7-112 ~]# ll /etc/yum.repos.d/
-total 12
-drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
--rw-r--r-- 1 root root 3835 Jul  8 17:27 oracle-linux-ol7.repo
--rw-r--r-- 1 root root 2587 Jul  8 17:25 uek-ol7.repo
--rw-r--r-- 1 root root  226 Jul  8 17:25 virt-ol7.repo
-```
-
-
-
->>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 #### 3、安装Oracle11gR2预装包
-
-
 
 https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
 
-
-
-
-
 ![image-20200714081621519](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714081621519.png)
-
-
 
 ##### 第一步开始安装
 
@@ -765,7 +652,7 @@ https://oracle-base.com/articles/misc/oui-silent-installations
 [oracle@ol7-112 ~]$ cat /u01/database/response/db_install.rsp | grep -v "#"|grep -v "^$"
 ```
 
-##### 响应文件如下，具体如何配置项请自行查阅
+**响应文件如下，具体如何配置项请自行查阅**
 
 ```properties
 oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_schema_v11_2_0
@@ -1067,7 +954,7 @@ Check /u01/app/oracle/product/11.2.0/dbhome_1/install/root_ol7-112.localdomain_2
 [root@ol7-112 ~]# vim /etc/oratab
 ```
 
-##### 文件内容为：
+文件内容为：
 
 ```properties
 # This file is used by ORACLE utilities.  It is created by root.sh
@@ -1091,7 +978,7 @@ Check /u01/app/oracle/product/11.2.0/dbhome_1/install/root_ol7-112.localdomain_2
 orcl:/u01/app/oracle/product/11.2.0/dbhome_1:N
 ```
 
-##### 修改为：
+修改为：
 
 ```properties
 # This file is used by ORACLE utilities.  It is created by root.sh
@@ -1123,7 +1010,9 @@ orcl:/u01/app/oracle/product/11.2.0/dbhome_1:Y
 [root@ol7-112 ~]# vim /etc/init.d/oracle
 ```
 
-##### 文件内容为：
+
+
+**文件内容为：**
 
 ```shell
 #!/bin/sh
