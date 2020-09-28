@@ -108,10 +108,6 @@ total 36
 -rw-r--r--. 1 root root  616 Apr  7 18:01 CentOS-x86_64-kernel.repo
 ```
 
-
-<<<<<<< HEAD
-
-=======
 >>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 
 ###### 第二部创建临时yum源：
@@ -132,24 +128,16 @@ baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpgcheck=1
 enabled=1
+#注意上面第二、三行是单引号
+#注意上面第三行是单引号
 ```
 
-<<<<<<< HEAD
-#注意上面第二、三行是单引号
 
-
-=======
-#注意上面第三行是单引号
->>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 
 ###### 第三步安装ol7的yum源：
 
-<<<<<<< HEAD
-=======
 
-###### 第三步安装ol7的yum源：
 
->>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 ```shell
 [root@ol7-112 ~]# yum install oraclelinux-release-el7
 Loaded plugins: fastestmirror, langpacks
@@ -207,8 +195,7 @@ Installed:
 Complete!
 ```
 
-<<<<<<< HEAD
-=======
+
 
 >>>>>>> 4b8029ebdb1461cfd40b5997faac3a09eadc32f9
 
@@ -227,7 +214,7 @@ Complete!
 
 ```shell
 =======
-```shell
+​```shell
 [root@ol7-112 ~]# mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
 ```
 
@@ -358,8 +345,6 @@ drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
 
 
 
-<<<<<<< HEAD
-=======
 ###### 第二步直接下载rpm包
 
 ![image-20200715113449139](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200715113449139.png)
