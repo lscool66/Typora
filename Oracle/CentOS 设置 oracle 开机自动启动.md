@@ -3,7 +3,7 @@
 #### 1、编辑oratab文件
 
 ```shell
-[root@localhost ~]# vim /etc/oratab
+[root@ol7-11g ~]# vim /etc/oratab
 ```
 
 文件内容为：
@@ -48,8 +48,8 @@ orcl:/data/oracle/product/11.2.0/db_1:Y
 
 #### 2、编辑/etc/rc.d/rc.local
 
-```
-[root@localhost init.d]# vim /etc/rc.d/rc.local
+```shell
+[root@ol7-11g init.d]# vim /etc/rc.d/rc.local
 ```
 
 文件内容为：
@@ -82,13 +82,13 @@ orcl:/data/oracle/product/11.2.0/db_1:Y
 
 #### 3、创建/etc/init.d/oracle
 
-```
-[root@localhost init.d]# vim /etc/init.d/oracle
+```shell
+[root@ol7-11g init.d]# vim /etc/init.d/oracle
 ```
 
 文件内容为：
 
-```
+```shell
 #!/bin/sh
 
 # chkconfig: 345 61 61
@@ -151,20 +151,20 @@ exit 0
 
 #### 4、赋予/etc/rc.d/init.d执行权限
 
-```
-[root@localhost init.d]# cd /etc/rc.d/init.d
-[root@localhost init.d]# chmod +x oracle
+```shell
+[root@ol7-11g init.d]# cd /etc/rc.d/init.d
+[root@ol7-11g init.d]# chmod +x oracle
 ```
 
 #### 5、测试脚本
 
-```
-[root@localhost init.d]# ./oracle start
+```shell
+[root@ol7-11g init.d]# ./oracle start
 ```
 
 运行结果为：
 
-```
+```shell
 ORACLE_HOME_LISTNER is not SET, unable to auto-start Oracle Net Listener
 Usage: /data/oracle/product/11.2.0/db_1/bin/dbstart ORACLE_HOME
 Processing Database instance "orcl": log file /data/oracle/product/11.2.0/db_1/startup.log
@@ -173,13 +173,13 @@ Oracle Start Succesful!OK.
 
 
 
-```
-[root@localhost init.d]# ./oracle stop
+```shell
+[root@ol7-11g init.d]# ./oracle stop
 ```
 
 运行结果为：
 
-```
+```shell
 ORACLE_HOME_LISTNER is not SET, unable to auto-stop Oracle Net Listener
 Usage: /data/oracle/product/11.2.0/db_1/bin/dbshut ORACLE_HOME
 Processing Database instance "orcl": log file /data/oracle/product/11.2.0/db_1/shutdown.log
@@ -190,18 +190,18 @@ Oracle Stop Succesful!OK.
 
 #### 6、修改/data/oracle/product/11.2.0/db_1/bin/dbstart文件
 
-```
-[root@localhost init.d]# vim /data/oracle/product/11.2.0/db_1/bin/dbstart
+```shell
+[root@ol7-11g init.d]# vim /data/oracle/product/11.2.0/db_1/bin/dbstart
 ```
 
 文件修改内容为（替换掉ORACLE_HOME_LISTNER=$1）：
 
-```
-省略...
-\# First argument is used to bring up Oracle Net Listener
-\#ORACLE_HOME_LISTNER=$1
+```shell
+...
+# First argument is used to bring up Oracle Net Listener
+#ORACLE_HOME_LISTNER=$1
 ORACLE_HOME_LISTNER=$ORACLE_HOME
-省略...
+...
 ```
 
 
@@ -209,80 +209,48 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 #### 7、修改/data/oracle/product/11.2.0/db_1/bin/dbshut
 
 ```
-[root@localhost init.d]# vim /data/oracle/product/11.2.0/db_1/bin/dbshut
+[root@ol7-11g init.d]# vim /data/oracle/product/11.2.0/db_1/bin/dbshut
 ```
 
 文件修改内容为（替换掉ORACLE_HOME_LISTNER=$1）：
 
-```
-省略...
-\# The this to bring down Oracle Net Listener
-\#ORACLE_HOME_LISTNER=$1
+```shell
+...
+# The this to bring down Oracle Net Listener
+#ORACLE_HOME_LISTNER=$1
 ORACLE_HOME_LISTNER=$ORACLE_HOME
 if [ ! $ORACLE_HOME_LISTNER ] ; then
-省略...
+...
 ```
 
 
 
 #### 8、测试脚本
 
-```
-[root@localhost init.d]# ./oracle start
-```
-
-运行结果为
-
-```
+```shell
+[root@ol7-11g init.d]# ./oracle start
 Processing Database instance "orcl": log file /data/oracle/product/11.2.0/db_1/startup.log
 Oracle Start Succesful!OK.
 ```
 
 
 
-#### 9、创建启动连接
-
-```
-[root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc2.d/S61oracle
-[root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc3.d/S61oracle
-[root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc4.d/S61oracle
-[root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc0.d/S61oracle
-[root@localhost init.d]# ln -s /etc/rc.d/init.d/oracle /etc/rc6.d/S61oracle
-```
-
-#### 10、查看启动连接
-
-```
-[root@localhost init.d]# ll /etc/rc0.d/
-```
-
-```
-total 0
-lrwxrwxrwx. 1 root root 32 Nov 15 01:04 K43vmware-tools-thinprint -../init.d/vmware-tools-thinprint
-lrwxrwxrwx. 1 root root 20 Nov 14 22:30 K50netconsole -../init.d/netconsole
-lrwxrwxrwx. 1 root root 17 Nov 14 22:30 K90network -../init.d/network
-lrwxrwxrwx. 1 root root 22 Nov 15 01:04 K99vmware-tools -../init.d/vmware-tools
-lrwxrwxrwx 1 root root 23 Dec 1 17:31 S61oracle -/etc/rc.d/init.d/oracle
-```
 
 
+#### 9、添加启动服务
 
-#### 11、添加启动服务
+```shell
+[root@ol7-11g init.d]# chkconfig --add oracle
+[root@ol7-11g init.d]# chkconfig --list oracle
 
-```
-[root@localhost init.d]# chkconfig --level 234 oracle on
-[root@localhost init.d]# chkconfig --add oracle
-[root@localhost init.d]# chkconfig --list oracle
-```
-
-```
 Note: This output shows SysV services only and does not include native
-systemd services. SysV configuration data might be overridden by native
-systemd configuration.
+      systemd services. SysV configuration data might be overridden by native
+      systemd configuration.
 
-If you want to list systemd services use 'systemctl list-unit-files'.
-To see services enabled on particular target use
-'systemctl list-dependencies [target]'.
+      If you want to list systemd services use 'systemctl list-unit-files'.
+      To see services enabled on particular target use
+      'systemctl list-dependencies [target]'.
 
-oracle 0:on 1:off 2:on 3:on 4:on 5:on 6:on
+oracle    0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
 ```
