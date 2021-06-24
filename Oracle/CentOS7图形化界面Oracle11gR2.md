@@ -208,29 +208,29 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2019-09-29_04
 
 ==点击next==
 
-![1569744199491](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744199491.png)
+![1569744199491](https://raw.githubusercontent.com/lscool66/imgs/master/1569744199491.png)
 
 ### 4、确定点击==yes==
 
-![1569744234616](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744234616.png)
+![1569744234616](https://raw.githubusercontent.com/lscool66/imgs/master/1569744234616.png)
 
 ### 5、选择创建并配置数据库（create and configure a database）
 
 ==点击next==
 
-![1569744241449](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744241449.png)
+![1569744241449](https://raw.githubusercontent.com/lscool66/imgs/master/1569744241449.png)
 
 ### 6、选择server class
 
 点击==next==
 
-![1569744247600](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744247600.png)
+![1569744247600](https://raw.githubusercontent.com/lscool66/imgs/master/1569744247600.png)
 
 ### 7、选择单实例安装
 
 点击==next==
 
-![1569744253104](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744253104.png)
+![1569744253104](https://raw.githubusercontent.com/lscool66/imgs/master/1569744253104.png)
 
 ### 8、可以选择 [典型安装]() 也可以选择 [高级安装]()
 
@@ -238,43 +238,43 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2019-09-29_04
 
 点击==next==
 
-![1569744257569](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744257569.png)
+![1569744257569](https://raw.githubusercontent.com/lscool66/imgs/master/1569744257569.png)
 
 ### 9、以下是默认生成的安装路径，如果不会配置只需配置密码即可
 
 点击==next==
 
-![1569744274048](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744274048.png)
+![1569744274048](https://raw.githubusercontent.com/lscool66/imgs/master/1569744274048.png)
 
 密码不符合规范点击==yes==即可
 
-![1569744293816](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744293816.png)
+![1569744293816](https://raw.githubusercontent.com/lscool66/imgs/master/1569744293816.png)
 
 默认路径即可
 
 - 点击==next==
 
-![1569744301489](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744301489.png)
+![1569744301489](https://raw.githubusercontent.com/lscool66/imgs/master/1569744301489.png)
 
 ### 10、生成响应文件
 
-![1569744317848](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744317848.png)
+![1569744317848](https://raw.githubusercontent.com/lscool66/imgs/master/1569744317848.png)
 
 - 有检测失败的==忽略==即可
 
-![1569744360244](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744360244.png)
+![1569744360244](https://raw.githubusercontent.com/lscool66/imgs/master/1569744360244.png)
 
 - 勾选 ==ignore all==
 
-![Oracle11gR2忽略警告](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Oracle11gR2%E5%BF%BD%E7%95%A5%E8%AD%A6%E5%91%8A.png)
+![Oracle11gR2忽略警告](https://raw.githubusercontent.com/lscool66/imgs/master/Oracle11gR2%E5%BF%BD%E7%95%A5%E8%AD%A6%E5%91%8A.png)
 
 - 可选保存==响应文件==
 
-![Oracle11gR2保存相应文件](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Oracle11gR2%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%BA%94%E6%96%87%E4%BB%B6.png)
+![Oracle11gR2保存相应文件](https://raw.githubusercontent.com/lscool66/imgs/master/Oracle11gR2%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%BA%94%E6%96%87%E4%BB%B6.png)
 
 ### 11、开始安装显示安装进度
 
-![1569744420605](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Oracle11gR2%E5%AE%89%E8%A3%85%E8%BF%9B%E5%BA%A6.png)
+![1569744420605](https://raw.githubusercontent.com/lscool66/imgs/master/Oracle11gR2%E5%AE%89%E8%A3%85%E8%BF%9B%E5%BA%A6.png)
 
 ### 12、如果安装过程中，在link binaries阶段出现2个错误
 
@@ -320,15 +320,15 @@ $(MK_EMAGENT_NMECTL) -lnnz11
 
 - 按上述修改完相关文件==retry==即可
 
-![1569744874105](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744874105.png)
+![1569744874105](https://raw.githubusercontent.com/lscool66/imgs/master/1569744874105.png)
 
 - 继续安装
 
-![1569744888725](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569744888725.png)
+![1569744888725](https://raw.githubusercontent.com/lscool66/imgs/master/1569744888725.png)
 
 ### 13、如果没有配置==hosts==会出现如下错误
 
-![1569745082872](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745082872.png)
+![1569745082872](https://raw.githubusercontent.com/lscool66/imgs/master/1569745082872.png)
 
 ```shell
 #只需修改hosts文件retry即可
@@ -340,25 +340,25 @@ $(MK_EMAGENT_NMECTL) -lnnz11
 
 - 继续安装
 
-![1569745216134](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745216134.png)
+![1569745216134](https://raw.githubusercontent.com/lscool66/imgs/master/1569745216134.png)
 
 ### 14、接下来会自动创建数据库
 
-![1569745283207](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745283207.png)
+![1569745283207](https://raw.githubusercontent.com/lscool66/imgs/master/1569745283207.png)
 
-![1569745564001](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745564001.png)
+![1569745564001](https://raw.githubusercontent.com/lscool66/imgs/master/1569745564001.png)
 
 - 安装成功点击==ok==即可
 
-![1569745958600](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745958600.png)
+![1569745958600](https://raw.githubusercontent.com/lscool66/imgs/master/1569745958600.png)
 
 - 接下来会出现要你使用root账户执行两个文件，新打开一个窗口登录root账户执行即可
 
-![1569745991431](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569745991431.png)
+![1569745991431](https://raw.githubusercontent.com/lscool66/imgs/master/1569745991431.png)
 
 ### 15、最后点击finish即可
 
-![1569746121936](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/1569746121936.png)
+![1569746121936](https://raw.githubusercontent.com/lscool66/imgs/master/1569746121936.png)
 
 ### 16、查看监听状态
 
@@ -880,11 +880,11 @@ export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK                #客户端字符集
 
 ### 1.运行 ./runInstaller 出现256颜色 不通过问题
 
- ![root用户问题](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20170827204051960)
+ ![root用户问题](https://raw.githubusercontent.com/lscool66/imgs/master/20170827204051960)
 
  解决方案：  切换到root，输入命令xhost +  运行后如下图可切换到oracle安装
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/2019021515300976.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/2019021515300976.png)
 
 ### 2. 运行 ./runInstaller 安装界面出现乱码问题
 
@@ -944,4 +944,4 @@ $(MK_EMAGENT_NMECTL) -lnnz11
 解决方案： 
 vi /etc/hosts 增加自己的ip和主机名
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/Typora/20170827232944460)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/20170827232944460)

@@ -9,8 +9,8 @@
 1. 设置数据库字符集编码为UTF-8
 
 2. 进入资源库连接配置页面
-   ![在这里插入图片描述](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20190527103543563.png)
-   ![资源库连接配置页面](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20190527103253909.png)
+   ![在这里插入图片描述](https://raw.githubusercontent.com/lscool66/imgs/master/20190527103543563.png)
+   ![资源库连接配置页面](https://raw.githubusercontent.com/lscool66/imgs/master/20190527103253909.png)
 
    点击选项，在选项处，增加如下值`characterEncoding:utf8`
 
@@ -19,4 +19,4 @@
    useCursorFetch true
 
    点击高级，在高级处的增加如下需要执行的sql语句`set names utf8;`
-   ![在这里插入图片描述](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/20190527103928589.png)
+   ![在这里插入图片描述](https://raw.githubusercontent.com/lscool66/imgs/master/20190527103928589.png)

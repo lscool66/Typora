@@ -16,7 +16,7 @@ https://www.oracle.com/database/technologies/112010-linx8664soft.html
 
 
 
-![image-20200713135640969](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200713135640969.png)
+![image-20200713135640969](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200713135640969.png)
 
 
 
@@ -26,7 +26,7 @@ https://www.oracle.com/database/technologies/112010-linx8664soft.html
 
 https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
 
-![image-20200714083042862](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714083042862.png)
+![image-20200714083042862](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714083042862.png)
 
 ```shell
 [root@ol7-112 ~]# echo "192.168.131.106 ol7-112.localdomain  ol7-112" >> /etc/hosts
@@ -49,7 +49,7 @@ http://yum.oracle.com/faq.html#a10
 
 
 
-![image-20200713131058423](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200713131058423.png)
+![image-20200713131058423](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200713131058423.png)
 
 
 
@@ -85,7 +85,7 @@ https://yum.oracle.com/getting-started.html#installing-software-from-oracle-linu
 
 
 
-![image-20200713133002695](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200713133002695.png)
+![image-20200713133002695](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200713133002695.png)
 
 
 
@@ -243,7 +243,7 @@ total 36
 
 ###### 第二步直接下载rpm包
 
-![image-20200715113449139](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200715113449139.png)
+![image-20200715113449139](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200715113449139.png)
 
 
 
@@ -324,7 +324,7 @@ drwxr-xr-x 2 root root  220 Jul 14 22:58 backup
 
 https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
 
-![image-20200714081621519](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714081621519.png)
+![image-20200714081621519](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714081621519.png)
 
 ##### 第一步开始安装
 
@@ -503,7 +503,7 @@ drwxr-xr-x  2 root root    6 Jul 14 23:28 backup
 
 https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-7
 
-![image-20200714081243235](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714081243235.png)
+![image-20200714081243235](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714081243235.png)
 
 
 
@@ -558,7 +558,7 @@ SELINUXTYPE=targeted
 
 #### 5、Oracle用户添加环境变量
 
-![image-20200714132237807](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714132237807.png)
+![image-20200714132237807](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714132237807.png)
 
 PS：**上图为官网给出环境变量不太美观缺少几项**
 
@@ -644,7 +644,7 @@ https://oracle-base.com/articles/misc/oui-silent-installations
 
 
 
-![image-20200714083354488](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714083354488.png)
+![image-20200714083354488](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714083354488.png)
 
 
 
@@ -942,7 +942,7 @@ Check /u01/app/oracle/product/11.2.0/dbhome_1/install/root_ol7-112.localdomain_2
 
 ##### 第五步测试连接成功
 
-![image-20200714084619353](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714084619353.png)
+![image-20200714084619353](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714084619353.png)
 
 
 
@@ -1123,7 +1123,7 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 省略...
 ```
 
-![dbstartimage-20200714091324230](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/dbstartimage-20200714091324230.png)
+![dbstartimage-20200714091324230](https://raw.githubusercontent.com/lscool66/imgs/master/dbstartimage-20200714091324230.png)
 
 
 
@@ -1148,7 +1148,7 @@ ORACLE_HOME_LISTNER=$ORACLE_HOME
 省略...
 ```
 
-![image-20200714091148534](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/image-20200714091148534.png)
+![image-20200714091148534](https://raw.githubusercontent.com/lscool66/imgs/master/image-20200714091148534.png)
 
 
 

@@ -130,7 +130,7 @@ MIT - see [License file](https://github.com/pyenv/pyenv-installer/blob/master/LI
 pyenv install -l
 ```
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image-1568863112146.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image-1568863112146.png)
 
 
 
@@ -143,7 +143,7 @@ pyenv install -l
 Downloading Python-3.5.4.tar.xz...-> https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tar.xz
 ```
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(1)-1568863112147.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(1)-1568863112147.png)
 
 
 
@@ -167,7 +167,7 @@ Python-x.x.x.tgz
 makedir -r ~/.pyenv/cache
 ```
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(2)-1568863112147.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(2)-1568863112147.png)
 
 
 
@@ -199,7 +199,7 @@ makedir -r ~/.pyenv/cache
 
 
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(3)-1568863112147.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(3)-1568863112147.png)
 
 
 
@@ -213,7 +213,7 @@ pyenv local 3.7.4
 
 
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(4)-1568863112147.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(4)-1568863112147.png)
 
 
 
@@ -227,7 +227,7 @@ pyenv local 3.7.4
 pyenv virtualenv zhangyi
 ```
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(5)-1568863112147.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(5)-1568863112147.png)
 
 
 
@@ -235,7 +235,7 @@ pyenv virtualenv zhangyi
 
 
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(3)-1568863112147.png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(3)-1568863112147.png)
 
 
 
@@ -285,7 +285,7 @@ jupyter notebook --ip=0.0.0.0
 
 
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(7).png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(7).png)
 
 
 
@@ -293,9 +293,9 @@ jupyter notebook --ip=0.0.0.0
 
 
 
-![jupter](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/jupter.png)
+![jupter](https://raw.githubusercontent.com/lscool66/imgs/master/jupter.png)
 
-![img](https://raw.githubusercontent.com/lscool66/cloudimg/master/img/Image(9).png)
+![img](https://raw.githubusercontent.com/lscool66/imgs/master/Image(9).png)
 
 
 
