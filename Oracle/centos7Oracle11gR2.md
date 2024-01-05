@@ -199,9 +199,9 @@ drwxr-xr-x 8 oracle oinstall        128 8月  21 2009 database
 
 ```shell
 #配置环境变量
-[oracle@centos7-minimal ~]$ vim .bash_profile
+[oracle@centos7-minimal ~]$ vim .bashrc
 #立即生效配置文件
-[oracle@centos7-minimal ~]$ source .bash_profile
+[oracle@centos7-minimal ~]$ source .bashrc
 #增加
 export ORACLE_BASE=/home/oracle/app/oracle
 export ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_1

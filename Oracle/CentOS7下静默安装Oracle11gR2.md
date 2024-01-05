@@ -567,7 +567,7 @@ PS：**上图为官网给出环境变量不太美观缺少几项**
 ```shell
 [root@ol7-112 ~]# su oracle
 [oracle@ol7-112 root]$ cd
-[oracle@ol7-112 ~]$ vim .bash_profile
+[oracle@ol7-112 ~]$ vim .bashrc
 ```
 
 以下为环境变量
